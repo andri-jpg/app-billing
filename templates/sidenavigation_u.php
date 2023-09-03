@@ -3,12 +3,8 @@
         <div class="sb-sidenav-menu">
             <div class="nav mt-3">
             <a class="nav-link" href="user_index.php">
-                    <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'user_regist') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-circle-plus"></i></div>
+                    <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'user_index') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-circle-plus"></i></div>
                     Dashboard
-                    </a>
-            <a class="nav-link" href="user_regist.php">
-                    <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'user_regist') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-circle-plus"></i></div>
-                    Registrasi Pelanggan
                     </a>
                 <a class="nav-link" href="user_tagihan.php">
                     <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'user_tagihan') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-layer-group"></i></div>

@@ -7,7 +7,6 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-require 'get_stok_barang.php';
 
 require 'get_barang_masuk.php';
 
