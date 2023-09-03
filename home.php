@@ -74,11 +74,7 @@ require 'get_stok_barang.php';
                                                     </button>
                                                     <button type="button" class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $item['idbarang']; ?>">
                                                         Hapus
-                                                    </button>
-                                                    <a href="detail_barang.php?id=<?php echo $item['idbarang']; ?>">
-                                                        <button type="button" class="btn btn-secondary mb-1">
-                                                            Detail
-                                                        </button>
+                                                    
                                                     </a>
                                             </tr>
 

@@ -70,19 +70,15 @@ require 'get_barang_masuk.php';
                                             <tr>
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $item['tanggal']; ?></td>
-                                            <?php foreach($data_pelanggan as $item): ?>
                                                 <td><?php echo $item['namapelanggan']; ?></td>
-                                                <?php endforeach ?>
-                                            <?php foreach($data_stok_barang as $item): ?>
                                                 <td><?php echo $item['namapaket']; ?></td>
                                                 <td><?php echo $item['harga']; ?></td>
-                                                <?php endforeach ?>
                                                 <td>
                                                     <button type="button" class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#edit<?php echo $item['idtagihan']; ?>">
                                                         Edit
                                                     </button>
-                                                    <button type="button" class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $item['idtagihan']; ?>">
-                                                        Hapus
+                                                    <button type="button" class="btn btn-info mb-1" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $item['idtagihan']; ?>">
+                                                        Bayar
                                                     </button>
                                                 </td>
                                             </tr>
@@ -115,18 +111,16 @@ require 'get_barang_masuk.php';
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <form method="POST" action="hapus_barang_keluar.php">
                                                             <div class="modal-body">
-                                                                <p>Apakah anda yakin ingin menghapus <?php echo $item['namapaket']; ?> ?</p>
-                                                                <input type="hidden" name="idbarang" value="<?php echo $item['idbarang']; ?>">
+                                                                <p>Apakah anda yakin ingin <?php echo $item['namapelanggan']; ?> Sudah membayar ?</p>
                                                                 <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
-                                                                <input type="hidden" name="qty" value="<?php echo $item['qty']; ?>">
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-primary">Hapus</button>
+                                                                <button type="submit" class="btn btn-primary">Bayar</button>
                                                             </div>
                                                         </form>
                                                     </div>

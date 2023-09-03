@@ -14,6 +14,10 @@
                     <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'barang_keluar') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-circle-minus"></i></div>
                     Data Tagihan
                 </a>
+                <a class="nav-link" href="history_tagihan.php">
+                    <div class="sb-nav-link-icon <?php echo strpos($_SERVER['REQUEST_URI'], 'history_tagihan') ? 'text-primary' : ''; ?>"><i class="fa-solid fa-clock"></i></div>
+                    History Tagihan
+                </a>
                 <a class="nav-link mt-4" href="logout.php">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
                     Log Out

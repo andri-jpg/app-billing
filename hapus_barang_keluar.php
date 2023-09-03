@@ -1,26 +1,27 @@
 <?php
-
 require 'config/db_connect.php';
 
-$idbarang = $_POST['idbarang'];
 $idtagihan = $_POST['idtagihan'];
-$qty = $_POST['qty'];
 
-$sql_stok_barang = "SELECT stock FROM stock WHERE idbarang='$idbarang'";
-$result_data_stok = mysqli_query($conn, $sql_stok_barang);
-$data_stok_sekarang = mysqli_fetch_array($result_data_stok);
-$stok_sekarang = $data_stok_sekarang['stock'];
+// 2. Pilih data yang ingin Anda pindahkan
+$sql_select = "SELECT keluar.idtagihan, masuk.namapelanggan, stock.namapaket, stock.harga
+FROM keluar
+INNER JOIN masuk ON keluar.idpelanggan = masuk.idpelanggan
+INNER JOIN stock ON keluar.idbarang = stock.idbarang
+WHERE keluar.idtagihan='$idtagihan'";
+$result = mysqli_query($conn, $sql_select);
+$data_to_move = mysqli_fetch_assoc($result);
 
-$perubahan = $stok_sekarang + $qty;
-$sql_perubahan_stok = "UPDATE stock SET stock='$perubahan' WHERE idbarang='$idbarang'";
-$perubahan_stok = mysqli_query($conn, $sql_perubahan_stok);
 
+$current_timestamp = date('Y-m-d H:i:s'); 
+$sql_insert = "INSERT INTO history (tanggal, namapelanggan, namapaket, harga) VALUES ('$current_timestamp', '{$data_to_move['namapelanggan']}', '{$data_to_move['namapaket']}', '{$data_to_move['harga']}')";
+$insert_to_history = mysqli_query($conn, $sql_insert);
+
+// 4. Hapus data dari tabel 'keluar'
 $sql_hapus = "DELETE FROM keluar WHERE idtagihan='$idtagihan'";
 $hapus_barang = mysqli_query($conn, $sql_hapus);
 
-mysqli_free_result($result_data_stok);
 mysqli_close($conn);
 
 header('Location: barang_keluar.php');
-
 ?>
