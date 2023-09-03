@@ -42,7 +42,7 @@ require 'get_stok_barang.php';
                                     <i class="fas fa-table me-1"></i>
                                     Data Paket
                                 </div>
-                                <button type="button" class="btn btn-primary mr-auto" data-bs-toggle="modal" data-bs-target="#tambah">
+                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
                                     Tambah Paket
                                 </button>
                             </div>
@@ -85,7 +85,7 @@ require 'get_stok_barang.php';
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Barang</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="edit_stok_barang.php">
                                                             <div class="modal-body">
@@ -107,7 +107,7 @@ require 'get_stok_barang.php';
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="hapus_stok_barang.php">
                                                             <div class="modal-body">
@@ -139,7 +139,7 @@ require 'get_stok_barang.php';
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambah Paket</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                     </div>
                     <form method="POST" action="tambah_stok_barang.php">
                         <div class="modal-body">

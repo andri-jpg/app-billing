@@ -44,7 +44,7 @@ require 'get_barang_masuk.php';
                                     <i class="fas fa-table me-1"></i>
                                     Data Pelanggan
                                 </div>
-                                <button type="button" class="btn btn-primary mr-auto" data-bs-toggle="modal" data-bs-target="#tambah">
+                                <button type="button"class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
                                     Tambah Pelanggan
                                 </button>
                             </div>
@@ -55,7 +55,7 @@ require 'get_barang_masuk.php';
                                             <th>No</th>
                                             <th>Tanggal Pendaftaran</th>
                                             <th>Nama Pelanggan</th>
-                                            <th>Nomor HP</th>
+                                            <th>Email</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -66,7 +66,7 @@ require 'get_barang_masuk.php';
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $item['tanggal']; ?></td>
                                                 <td><?php echo $item['namapelanggan']; ?></td>
-                                                <td><?php echo $item['nomorhp']; ?></td>
+                                                <td><?php echo $item['email']; ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#edit<?php echo $item['idpelanggan']; ?>">
                                                         Edit
@@ -83,21 +83,18 @@ require 'get_barang_masuk.php';
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Barang : <?php echo $item['namabarang']; ?></h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Pelanggan</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="edit_barang_masuk.php">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="idbarang" value="<?php echo $item['idbarang']; ?>">
                                                                 <input type="hidden" name="idpelanggan" value="<?php echo $item['idpelanggan']; ?>">
-                                                                <label class="mb-1">Jumlah barang :</label>
-                                                                <input type="text" name="qty" value="<?php echo $item['qty']; ?>" min="1" class="form-control mb-3" required />
-                                                                <label class="mb-1">Penerima :</label>
-                                                                <input type="text" name="penerima" value="<?php echo $item['penerima']; ?>" class="form-control mb-3" required />
+                                                                <input type="text" name="namapelanggan" value="<?php echo $item['namapelanggan']; ?>" class="form-control mb-3" required />
+                                                                <input type="text" name="email" value="<?php echo $item['email']; ?>" class="form-control mb-3" required />
+                                                                
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-primary">Save</button>
-                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Save</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -108,7 +105,7 @@ require 'get_barang_masuk.php';
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="hapus_barang_masuk.php">
                                                             <div class="modal-body">

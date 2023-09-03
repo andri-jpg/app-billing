@@ -3,10 +3,10 @@
 require 'config/db_connect.php';
 
 $idbarang = $_POST['idbarang'];
-$namabarang = $_POST['namabarang'];
+$namapaket = $_POST['namapaket'];
 $deskripsi = $_POST['deskripsi'];
 
-$sql_edit = "UPDATE stock SET namabarang='$namabarang', deskripsi='$deskripsi' WHERE idbarang='$idbarang'";
+$sql_edit = "UPDATE stock SET namapaket='$namapaket', deskripsi='$deskripsi' WHERE idbarang='$idbarang'";
 $edit_barang = mysqli_query($conn, $sql_edit);
 
 mysqli_close($conn);

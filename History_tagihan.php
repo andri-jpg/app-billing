@@ -39,9 +39,10 @@ require 'get_history.php';
                         <h1 class="my-4">History Tagihan</h1>
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-sm-center flex-column flex-sm-row">
-                                <div class="py-2">
-                                    <i class="fas fa-table me-1"></i>
-                                    Data History Tagihan
+            
+                                <div class="col-md-12">
+                                    <a href="laporan_history_excel.php" target="_blank" class="btn btn-success mb-3"><i class="fa fa-file-excel"></i>Export to Excel</a>
+                                
                                 </div>
                             </div>
                             <div class="card-body">
@@ -132,7 +133,7 @@ require 'get_history.php';
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambah Pelanggan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                     </div>
                     <form method="POST" action="tambah_barang_masuk.php">
                         <div class="modal-body">                  

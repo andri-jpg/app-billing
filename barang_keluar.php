@@ -45,7 +45,7 @@ require 'get_barang_masuk.php';
                                     <i class="fas fa-table me-1"></i>
                                     Data Tagihan
                                 </div>
-                                <button type="button" class="btn btn-primary mr-auto" data-bs-toggle="modal" data-bs-target="#tambah">
+                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
                                     Tambah Tagihan
                                 </button>
                             </div>
@@ -89,20 +89,28 @@ require 'get_barang_masuk.php';
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Barang : <?php echo $item['namapaket']; ?></h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Tagihan</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="edit_barang_keluar.php">
-                                                            <div class="modal-body">
-                                                                <input type="hidden" name="idbarang" value="<?php echo $item['idbarang']; ?>">
-                                                                <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
-                                                                <label class="mb-1">Penerima :</label>
-                                                                <input type="text" name="penerima" value="<?php echo $item['penerima']; ?>" class="form-control mb-3" required />
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-primary">Save</button>
-                                                            </div>
-                                                        </form>
+    <div class="modal-body">
+        <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
+        <select name="idbarang" class="form-control mb-3">
+            <?php foreach($data_stok_barang as $item): ?>
+                <option value="<?php echo $item['idbarang']; ?>"><?php echo $item['namapaket']; ?></option>
+            <?php endforeach ?>
+        </select>
+        <select name="idpelanggan" class="form-control mb-3">
+            <?php foreach($data_pelanggan as $pelanggan): ?>
+                <option value="<?php echo $pelanggan['idpelanggan']; ?>"><?php echo $pelanggan['namapelanggan']; ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+    </div>
+</form>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +120,7 @@ require 'get_barang_masuk.php';
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
                                                         <form method="POST" action="hapus_barang_keluar.php">
                                                             <div class="modal-body">
@@ -144,7 +152,7 @@ require 'get_barang_masuk.php';
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambah tagihan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                     </div>
                     <form method="POST" action="tambah_barang_keluar.php">
                         <div class="modal-body">
