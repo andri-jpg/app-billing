@@ -6,7 +6,7 @@ if (!isset($_SESSION['login_u'])) {
     exit;
 }
 
-require 'get_stok_barang.php';
+require 'get_paket.php';
 require 'config/db_connect.php';
 require 'get_user_tagihan.php';
 require 'get_user_id.php';
@@ -19,8 +19,6 @@ require 'get_user_id.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Aplikasi Management Stok Barang" />
-        <meta name="keywords" content="Management Stock, Stock App, Barang" />
         <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
         <title>Data Tagihan</title>
         <link href="css/styles.css" rel="stylesheet" />
@@ -119,6 +117,38 @@ require 'get_user_id.php';
                 </div>
             </div>
         </div>
+
+<?php foreach($data_tagihan_user as $item): ?>
+    <div class="modal fade" id="hapus<?php echo $item['idtagihan']; ?>" tabindex="-1" role="dialog" aria-labelledby="bayarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bayarModalLabel">Pembayaran Tagihan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="kirim_pembayaran.php" enctype="multipart/form-data">
+                    <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
+                    
+                    <div class="form-group">
+                        <label for="buktiPembayaran">Unggah Bukti Pembayaran</label>
+                        <input type="file" class="form-control-file" id="buktiPembayaran" name="buktiPembayaran" required>
+                    </div>
+                   
+                    <p>Jumlah yang harus dibayar: Rp.<?php echo $item['harga']; ?></p>
+                    <p>Silakan bayar melalui rekening BRI 232xxxxxxxxx A/n Admin.</p>
+                    <p>Setelah membayar, silakan unggah bukti pembayaran.</p>
+                    
+                    <button type="submit" class="btn btn-primary">Kirim Bukti Pembayaran</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php endforeach ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

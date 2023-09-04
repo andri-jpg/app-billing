@@ -6,17 +6,17 @@ if (!isset($_SESSION['login_u'])) {
     exit;
 }
 
-require 'get_barang_masuk.php';
+require 'get_pelanggan.php';
 require 'get_user_dashboard.php';
 
 if (!isset($_SESSION['is_registered'])) {
     $nama = $_SESSION['login_u']['username'];
     $email = $_SESSION['login_u']['email'];
 
-    $result = $conn->query("SELECT * FROM masuk WHERE namapelanggan = '$nama'") or die(mysqli_error($conn));
+    $result = $conn->query("SELECT * FROM pelanggan WHERE namapelanggan = '$nama'") or die(mysqli_error($conn));
 
     if ($result->num_rows === 0) {
-        $conn->query("INSERT INTO masuk (namapelanggan, email) VALUES ('$nama', '$email')") or die(mysqli_error($conn));
+        $conn->query("INSERT INTO pelanggan (namapelanggan, email) VALUES ('$nama', '$email')") or die(mysqli_error($conn));
 
         $_SESSION['is_registered'] = true;
     }

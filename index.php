@@ -16,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title></title>
-    <meta name="description" content="" />
     <meta name="keywords" content="" />
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
@@ -77,7 +76,6 @@
 
 
 
-        <!--Footer-->
         <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
         </div>
       </div>

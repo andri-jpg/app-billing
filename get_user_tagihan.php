@@ -8,11 +8,11 @@ require 'config/db_connect.php';
 
 $namaPelanggan = $_SESSION['login_u']['username'];
 
-$sql = "SELECT keluar.idtagihan, keluar.tanggal, masuk.idpelanggan, masuk.namapelanggan, stock.namapaket, stock.harga
-FROM keluar
-INNER JOIN masuk ON keluar.idpelanggan = masuk.idpelanggan
-INNER JOIN stock ON keluar.idbarang = stock.idbarang
-WHERE masuk.namapelanggan = '$namaPelanggan' AND keluar.status = 'belumlunas';";
+$sql = "SELECT tagihan.idtagihan, tagihan.tanggal, pelanggan.idpelanggan, pelanggan.namapelanggan, paket.namapaket, paket.harga
+FROM tagihan
+INNER JOIN pelanggan ON tagihan.idpelanggan = pelanggan.idpelanggan
+INNER JOIN paket ON tagihan.idbarang = paket.idbarang
+WHERE pelanggan.namapelanggan = '$namaPelanggan' AND tagihan.status = 'belumlunas';";
 $result = mysqli_query($conn, $sql);
 
 $data_tagihan_user = mysqli_fetch_all($result, MYSQLI_ASSOC);

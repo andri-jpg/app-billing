@@ -9,7 +9,7 @@ function register($data) {
     $password2 = $conn->real_escape_string($data['password2']); 
     $email = $conn->real_escape_string($data['email']);
 
-    $result = $conn->query("SELECT * FROM tb_user WHERE username = '$username'");
+    $result = $conn->query("SELECT * FROM user WHERE username = '$username'");
     if ($result->num_rows > 0) {
         echo "<script>alert('Username sudah terdaftar!');window.location='register.php';</script>";
         return false;
@@ -27,7 +27,7 @@ function register($data) {
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $conn->query("INSERT INTO tb_user VALUES (null, '$username', '$password', '$nama', '$email')") or die(mysqli_error($conn));
+    $conn->query("INSERT INTO user VALUES (null, '$username', '$password', '$nama', '$email')") or die(mysqli_error($conn));
     return $conn->affected_rows;
 }
 ?>

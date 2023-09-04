@@ -10,7 +10,7 @@ if (isset($_POST['login_u'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = $conn->query("SELECT * FROM tb_user WHERE username = '$username'") or die(mysqli_error($conn));
+    $result = $conn->query("SELECT * FROM user WHERE username = '$username'") or die(mysqli_error($conn));
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
@@ -35,8 +35,6 @@ if (isset($_POST['login_u'])) {
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <title>Halaman Login</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>

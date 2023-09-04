@@ -8,7 +8,7 @@ if (!isset($_SESSION['login'])) {
 }
 
 
-require 'get_barang_masuk.php';
+require 'get_pelanggan.php';
 
 ?>
 
@@ -18,8 +18,6 @@ require 'get_barang_masuk.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Aplikasi Management Stok Barang" />
-        <meta name="keywords" content="Management Stock, Stock App, Barang" />
         <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
         <title>Daftar Pelanggan</title>
         <link href="css/styles.css" rel="stylesheet" />
@@ -85,7 +83,7 @@ require 'get_barang_masuk.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Pelanggan</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="edit_barang_masuk.php">
+                                                        <form method="POST" action="edit_pelanggan.php">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="idpelanggan" value="<?php echo $item['idpelanggan']; ?>">
                                                                 <input type="text" name="namapelanggan" value="<?php echo $item['namapelanggan']; ?>" class="form-control mb-3" required />
@@ -94,9 +92,10 @@ require 'get_barang_masuk.php';
                                                             </div>
                                                             <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">Save</button>
-                                                        </form>
+                                                            </form>
                                                     </div>
                                                 </div>
+                                            </div>
                                             </div>
 
                                             <div class="modal fade" id="hapus<?php echo $item['idpelanggan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,7 +105,7 @@ require 'get_barang_masuk.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="hapus_barang_masuk.php">
+                                                        <form method="POST" action="hapus_pelanggan.php">
                                                             <div class="modal-body">
                                                                 <p>Apakah anda yakin ingin menghapus <?php echo $item['namapelanggan']; ?> ?</p>
                                                                 <input type="hidden" name="idpelanggan" value="<?php echo $item['idpelanggan']; ?>">
@@ -138,10 +137,10 @@ require 'get_barang_masuk.php';
                         <h5 class="modal-title" id="exampleModalLabel">Tambah Pelanggan</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="POST" action="tambah_barang_masuk.php">
+                    <form method="POST" action="tambah_pelanggan.php">
                         <div class="modal-body">                  
                             <input type="text" name="namapelanggan" placeholder="Nama pelanggan" class="form-control mb-3" required />
-                            <input type="number" name="nomorhp" placeholder="Nomor Hp" class="form-control mb-3" required />
+                            <input type="text" name="email" placeholder="Email" class="form-control mb-3" required />
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Tambah</button>

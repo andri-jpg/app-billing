@@ -7,7 +7,7 @@ $kecepatan = $_POST['kecepatan'];
 $deskripsi = $_POST['deskripsi'];
 $harga = $_POST['harga'];
 
-$sql = "INSERT INTO stock (namapaket, kecepatan, deskripsi, harga) values('$namapaket', '$kecepatan', '$deskripsi', '$harga')";
+$sql = "INSERT INTO paket (namapaket, kecepatan, deskripsi, harga) values('$namapaket', '$kecepatan', '$deskripsi', '$harga')";
 $addtotable = mysqli_query($conn, $sql);
 
 mysqli_close($conn);

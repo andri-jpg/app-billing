@@ -2,13 +2,12 @@
 
 require 'config/db_connect.php';
 
-$sql = "SELECT * FROM stock";
+$sql = "SELECT * FROM pelanggan";
 
 $result = mysqli_query($conn, $sql);
 
-$data_stok_barang = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$data_pelanggan = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 mysqli_free_result($result);
-mysqli_close($conn);
 
 ?>

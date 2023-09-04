@@ -3,17 +3,15 @@ require 'config/db_connect.php';
 
 $idtagihan = $_POST['idtagihan'];
 
-// 2. Ubah status menjadi 'lunas'
-$sql_update = "UPDATE keluar SET status = 'lunas' WHERE idtagihan='$idtagihan'";
+$sql_update = "UPDATE tagihan SET status = 'lunas' WHERE idtagihan='$idtagihan'";
 $update_status = mysqli_query($conn, $sql_update);
 
 if ($update_status) {
-    // Jika pembaruan berhasil, pindahkan data ke tabel 'history'
-    $sql_select = "SELECT keluar.idtagihan, masuk.namapelanggan, stock.namapaket, stock.harga
-    FROM keluar
-    INNER JOIN masuk ON keluar.idpelanggan = masuk.idpelanggan
-    INNER JOIN stock ON keluar.idbarang = stock.idbarang
-    WHERE keluar.idtagihan='$idtagihan'";
+    $sql_select = "SELECT tagihan.idtagihan, pelanggan.namapelanggan, paket.namapaket, paket.harga
+    FROM tagihan
+    INNER JOIN pelanggan ON tagihan.idpelanggan = pelanggan.idpelanggan
+    INNER JOIN paket ON tagihan.idbarang = paket.idbarang
+    WHERE tagihan.idtagihan='$idtagihan'";
     
     $result = mysqli_query($conn, $sql_select);
     $data_to_move = mysqli_fetch_assoc($result);
@@ -23,8 +21,7 @@ if ($update_status) {
     $insert_to_history = mysqli_query($conn, $sql_insert);
     
     if ($insert_to_history) {
-        // Jika pemindahan data berhasil
-        header('Location: barang_keluar.php');
+        header('Location: konfirmasi.php');
     } else {
         // Jika gagal memindahkan data
         echo 'Gagal memindahkan data ke tabel history.';

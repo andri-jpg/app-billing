@@ -7,7 +7,7 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-require 'get_stok_barang.php';
+require 'get_paket.php';
 
 ?>
 
@@ -17,8 +17,6 @@ require 'get_stok_barang.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Aplikasi Management Stok Barang" />
-        <meta name="keywords" content="Management Stock, Stock App, Barang" />
         <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
         <title>Data Paket</title>
         <link href="css/styles.css" rel="stylesheet" />
@@ -87,7 +85,7 @@ require 'get_stok_barang.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Barang</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="edit_stok_barang.php">
+                                                        <form method="POST" action="edit_paket.php">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="idbarang" value="<?php echo $item['idbarang']; ?>">
                                                                 <input type="number" name="harga" value="<?php echo $item['harga']; ?>" class="form-control mb-3" required />
@@ -109,7 +107,7 @@ require 'get_stok_barang.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="hapus_stok_barang.php">
+                                                        <form method="POST" action="hapus_paket.php">
                                                             <div class="modal-body">
                                                                 <p>Apakah anda yakin ingin menghapus <?php echo $item['namapaket']; ?> ?</p>
                                                                 <input type="hidden" name="idbarang" value="<?php echo $item['idbarang']; ?>">
@@ -141,7 +139,7 @@ require 'get_stok_barang.php';
                         <h5 class="modal-title" id="exampleModalLabel">Tambah Paket</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                     </div>
-                    <form method="POST" action="tambah_stok_barang.php">
+                    <form method="POST" action="tambah_paket.php">
                         <div class="modal-body">
                             <input type="text" name="namapaket" placeholder="Nama Paket" class="form-control mb-3" required />
                             <input type="text" name="kecepatan" placeholder="Kecepatan Koneksi" class="form-control mb-3" required />

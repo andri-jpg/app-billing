@@ -7,10 +7,10 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-require 'get_stok_barang.php';
+require 'get_paket.php';
 
-require 'get_barang_keluar.php';
-require 'get_barang_masuk.php';
+require 'get_tagihan.php';
+require 'get_pelanggan.php';
 
 ?>
 
@@ -20,10 +20,8 @@ require 'get_barang_masuk.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Aplikasi Management Stok Barang" />
-        <meta name="keywords" content="Management Stock, Stock App, Barang" />
         <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
-        <title>Data Tagihan</title>
+        <title>List Tagihan</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -54,10 +52,12 @@ require 'get_barang_masuk.php';
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>ID Tagihan</th>
                                             <th>Tanggal dan Waktu</th>
                                             <th>Nama Pelanggan</th>
                                             <th>Nama Paket</th>
                                             <th>Total Tagihan</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -65,19 +65,18 @@ require 'get_barang_masuk.php';
                                         
                                         <?php $i = 1; ?>
                                         
-                                        <?php foreach($data_barang_keluar as $item): ?>
+                                        <?php foreach($data_tagihan as $item): ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
+                                                <td><?php echo $item['idtagihan']; ?></td>
                                                 <td><?php echo $item['tanggal']; ?></td>
                                                 <td><?php echo $item['namapelanggan']; ?></td>
                                                 <td><?php echo $item['namapaket']; ?></td>
                                                 <td><?php echo $item['harga']; ?></td>
+                                                <td><?php echo $item['status']; ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#edit<?php echo $item['idtagihan']; ?>">
                                                         Edit
-                                                    </button>
-                                                    <button type="button" class="btn btn-info mb-1" data-bs-toggle="modal" data-bs-target="#bayar<?php echo $item['idtagihan']; ?>">
-                                                        Bayar
                                                     </button>
                                                 </td>
                                             </tr>
@@ -91,7 +90,7 @@ require 'get_barang_masuk.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Tagihan</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="edit_barang_keluar.php">
+                                                        <form method="POST" action="edit_tagihan.php">
                                                         <div class="modal-body">
                                                             <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
                                                             <select name="idbarang" class="form-control mb-3">
@@ -112,7 +111,7 @@ require 'get_barang_masuk.php';
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php foreach($data_barang_keluar as $item): ?>
+                                            <?php foreach($data_tagihan as $item): ?>
                                             <div class="modal fade" id="bayar<?php echo $item['idtagihan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -120,7 +119,7 @@ require 'get_barang_masuk.php';
                                                             <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                                                         </div>
-                                                        <form method="POST" action="hapus_barang_keluar.php">
+                                                        <form method="POST" action="fungsi_tagihan.php">
                                                             <div class="modal-body">
                                                                 <p>Apakah anda yakin ingin <?php echo $item['namapelanggan']; ?> Sudah membayar ?</p>
                                                                 <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
@@ -154,7 +153,7 @@ require 'get_barang_masuk.php';
                         <h5 class="modal-title" id="exampleModalLabel">Tambah tagihan</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                     </div>
-                    <form method="POST" action="tambah_barang_keluar.php">
+                    <form method="POST" action="tambah_tagihan.php">
                         <div class="modal-body">
                             <select name="paket" class="form-control mb-3">
                                 <?php foreach($data_stok_barang as $item): ?>
