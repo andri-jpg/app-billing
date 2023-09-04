@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
                             <div class="col-lg-5">
                                 <div class="card border-0 shadow-sm" style="border-radius: 10px; background-color: cornflowerblue">
                                     <div class="card-header bg-dark" style="border-radius: 10px 10px 0 0">
-                                        <h3 class="text-center font-weight-light text-white my-3">Stock App Login</h3>
+                                        <h3 class="text-center font-weight-light text-white my-3">Login Admin</h3>
                                     </div>
                                     <div class="card-body">
                                         <form method="POST">
@@ -78,11 +78,6 @@ if (isset($_POST['login'])) {
                         </div>
                     </div>
                 </main>
-                <div class="mx-auto mt-5" style="max-width: 600px">
-                    <p class="text-center py-2 mx-2 mb-0 bg-light">
-                        Email : admin@gmail.com ; Password : admin
-                    </p>
-                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

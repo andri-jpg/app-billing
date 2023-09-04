@@ -6,33 +6,11 @@ if (!isset($_SESSION['login_u'])) {
     exit;
 }
 
+require 'get_stok_barang.php';
 require 'config/db_connect.php';
-require 'get_barang_keluar.php';
+require 'get_user_tagihan.php';
+require 'get_user_id.php';
 
-// Mendapatkan idpelanggan berdasarkan session login_u username
-$username = $_SESSION['login_u']['username'];
-
-$idpelanggan = null; // Variabel untuk menyimpan idpelanggan
-
-// Kueri untuk mendapatkan idpelanggan berdasarkan username
-$result = $conn->query("SELECT idpelanggan FROM masuk WHERE namapelanggan = '$username'");
-if ($result->num_rows === 1) {
-    $row = $result->fetch_assoc();
-    $idpelanggan = $row['idpelanggan'];
-}
-
-$sql = "SELECT keluar.idtagihan, keluar.tanggal, masuk.namapelanggan, stock.namapaket, stock.harga
-FROM keluar
-INNER JOIN masuk ON keluar.idpelanggan = masuk.idpelanggan
-INNER JOIN stock ON keluar.idbarang = stock.idbarang
-WHERE masuk.idpelanggan = '$idpelanggan';"; // Menambahkan WHERE untuk hanya mengambil data dengan idpelanggan sesuai dengan session
-
-$result = mysqli_query($conn, $sql);
-
-$data_barang_keluar = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-mysqli_free_result($result);
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +44,7 @@ mysqli_close($conn);
                                     <i class="fas fa-table me-1"></i>
                                     Data Tagihan
                                 </div>
-                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
+                                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambah">
                                     Tambah Tagihan
                                 </button>
                             </div>
@@ -80,7 +58,6 @@ mysqli_close($conn);
                                             <th>Nama Pelanggan</th>
                                             <th>Nama Paket</th>
                                             <th>Total Tagihan</th>
-
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -88,7 +65,7 @@ mysqli_close($conn);
                                         
                                         <?php $i = 1; ?>
                                         
-                                        <?php foreach($data_barang_keluar as $item): ?>
+                                        <?php foreach($data_tagihan_user as $item): ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $item['tanggal']; ?></td>
@@ -102,35 +79,7 @@ mysqli_close($conn);
                                                     </button>
                                                 </td>
                                             </tr>
-
-                                            <?php $i++; ?>
-    <!-- Modal untuk setiap item -->
-    <div class="modal fade" id="bayarModal<?php echo $item['idtagihan']; ?>" tabindex="-1" role="dialog" aria-labelledby="bayarModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="bayarModalLabel">Pembayaran Tagihan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form untuk mengirim bukti pembayaran -->
-                    <form method="post">
-                        <input type="hidden" name="idtagihan" value="<?php echo $item['idtagihan']; ?>">
-                        <input type="hidden" name="namapelanggan" value="<?php echo $item['namapelanggan']; ?>">
-                        <input type="hidden" name="harga" value="<?php echo $item['harga']; ?>">
-                        <div class="form-group">
-                            <label for="buktiPembayaran">Unggah Bukti Pembayaran</label>
-                            <input type="file" class="form-control-file" id="buktiPembayaran" name="buktiPembayaran">
-                        </div>
-                        <button type="submit" name="bayar" class="btn btn-primary">Bayar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
+                                            <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -158,8 +107,8 @@ mysqli_close($conn);
                                 <?php endforeach ?>
                             </select>
                             <select name="pelanggan" class="form-control mb-3">
-                                <?php foreach($data_pelanggan as $item): ?>
-                                    <option value="<?php echo $idpelanggan; ?>"><?php echo $item['namapelanggan']; ?></option>
+                                <?php foreach($idpelanggan as $item): ?>
+                                    <option value="<?php echo $item['idpelanggan']; ?>"><?php echo $namaPelanggan; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>

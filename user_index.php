@@ -7,6 +7,7 @@ if (!isset($_SESSION['login_u'])) {
 }
 
 require 'get_barang_masuk.php';
+require 'get_user_dashboard.php';
 
 if (!isset($_SESSION['is_registered'])) {
     $nama = $_SESSION['login_u']['username'];
@@ -61,28 +62,29 @@ if (!isset($_SESSION['is_registered'])) {
 
                 <!-- Tabel tagihan user -->
                 <h2 class="mt-4">Daftar Tagihan</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tanggal Tagihan</th>
-                            <th>Jumlah Tagihan</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2023-09-10</td>
-                            <td>Rp 500,000</td>
-                            <td>Belum Lunas</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2023-09-15</td>
-                            <td>Rp 750,000</td>
-                            <td>Lunas</td>
-                        </tr>
+                <table id="datatablesSimple" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Tagihan</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>Nama Paket</th>
+                                            <th>Total Tagihan</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        
+                                        <?php foreach($data_tagihan_user as $item): ?>
+                                            <tr>
+                                               
+                                                <td><?php echo $item['idtagihan']; ?></td>
+                                                <td><?php echo $item['namapelanggan']; ?></td>
+                                                <td><?php echo $item['namapaket']; ?></td>
+                                                <td>Rp.<?php echo $item['harga']; ?></td>
+                                                <td><?php echo $item['status']; ?></td>
+                                            </tr>
+                                            <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

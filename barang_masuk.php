@@ -43,7 +43,7 @@ require 'get_barang_masuk.php';
                                     <i class="fas fa-table me-1"></i>
                                     Data Pelanggan
                                 </div>
-                                <button type="button"class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
+                                <button type="button"class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambah">
                                     Tambah Pelanggan
                                 </button>
                             </div>

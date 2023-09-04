@@ -8,6 +8,5 @@ $sql_masuk = "INSERT INTO keluar (idbarang, idpelanggan) values('$idbarang', '$i
 $addtotable = mysqli_query($conn, $sql_masuk);
 
 
-
 header('Location: user_tagihan.php');
 ?>
