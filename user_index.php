@@ -8,15 +8,17 @@ if (!isset($_SESSION['login_u'])) {
 
 require 'get_pelanggan.php';
 require 'get_user_dashboard.php';
+require 'get_paket.php';
 
 if (!isset($_SESSION['is_registered'])) {
     $nama = $_SESSION['login_u']['username'];
     $email = $_SESSION['login_u']['email'];
+    $alamat = $_SESSION['login_u']['alamat'];
 
     $result = $conn->query("SELECT * FROM pelanggan WHERE namapelanggan = '$nama'") or die(mysqli_error($conn));
 
     if ($result->num_rows === 0) {
-        $conn->query("INSERT INTO pelanggan (namapelanggan, email) VALUES ('$nama', '$email')") or die(mysqli_error($conn));
+        $conn->query("INSERT INTO pelanggan (namapelanggan, email, alamat) VALUES ('$nama', '$email', '$alamat')") or die(mysqli_error($conn));
 
         $_SESSION['is_registered'] = true;
     }
@@ -59,8 +61,29 @@ if (!isset($_SESSION['is_registered'])) {
                 </a>
             </div>
         </div>
-
-                <!-- Tabel tagihan user -->
+        <h2 class="mt-4">Daftar Paket</h2>
+                <table id="datatablesSimple" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama paket</th>
+                                            <th>Kecepatan</th>
+                                            <th>Deskripsi</th>
+                                            <th>Harga</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        
+                                        <?php foreach($data_stok_barang as $item): ?>
+                                            <tr>
+                                                <td><?php echo $item['namapaket']; ?></td>
+                                                <td><?php echo $item['kecepatan']; ?></td>
+                                                <td><?php echo $item['deskripsi']; ?></td>
+                                                <td><?php echo $item['harga']; ?></td>
+                                            </tr>
+                                            <?php endforeach ?>
+                    </tbody>
+                </table>
                 <h2 class="mt-4">Daftar Tagihan</h2>
                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>

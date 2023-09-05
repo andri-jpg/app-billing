@@ -8,6 +8,7 @@ function register($data) {
     $password = $conn->real_escape_string($data['password']); 
     $password2 = $conn->real_escape_string($data['password2']); 
     $email = $conn->real_escape_string($data['email']);
+    $alamat = $conn->real_escape_string($data['alamat']);
 
     $result = $conn->query("SELECT * FROM user WHERE username = '$username'");
     if ($result->num_rows > 0) {
@@ -27,7 +28,7 @@ function register($data) {
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $conn->query("INSERT INTO user VALUES (null, '$username', '$password', '$nama', '$email')") or die(mysqli_error($conn));
+    $conn->query("INSERT INTO user VALUES (null, '$username', '$password', '$nama', '$email', '$alamat')") or die(mysqli_error($conn));
     return $conn->affected_rows;
 }
 ?>

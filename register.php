@@ -44,6 +44,10 @@ if(isset($_POST['regis'])) {
                                                 <label class="small mb-1" for="email">Email</label>
                                                 <input class="form-control py-4" id="email" type="text" name="email"  placeholder="Masukan email anda" />
                                             </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="alamat">Alamat</label>
+                                                <input class="form-control py-4" id="email" type="text" name="alamat"  placeholder="Masukan Alamat anda" />
+                                            </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">

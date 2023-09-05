@@ -53,6 +53,7 @@ require 'get_pelanggan.php';
                                             <th>Tanggal Pendaftaran</th>
                                             <th>Nama Pelanggan</th>
                                             <th>Email</th>
+                                            <th>Alamat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -64,6 +65,7 @@ require 'get_pelanggan.php';
                                                 <td><?php echo $item['tanggal']; ?></td>
                                                 <td><?php echo $item['namapelanggan']; ?></td>
                                                 <td><?php echo $item['email']; ?></td>
+                                                <td><?php echo $item['alamat']; ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#edit<?php echo $item['idpelanggan']; ?>">
                                                         Edit
@@ -88,6 +90,7 @@ require 'get_pelanggan.php';
                                                                 <input type="hidden" name="idpelanggan" value="<?php echo $item['idpelanggan']; ?>">
                                                                 <input type="text" name="namapelanggan" value="<?php echo $item['namapelanggan']; ?>" class="form-control mb-3" required />
                                                                 <input type="text" name="email" value="<?php echo $item['email']; ?>" class="form-control mb-3" required />
+                                                                <input type="text" name="alamat" value="<?php echo $item['alamat']; ?>" class="form-control mb-3" required />
                                                                 
                                                             </div>
                                                             <div class="modal-footer">
@@ -141,6 +144,7 @@ require 'get_pelanggan.php';
                         <div class="modal-body">                  
                             <input type="text" name="namapelanggan" placeholder="Nama pelanggan" class="form-control mb-3" required />
                             <input type="text" name="email" placeholder="Email" class="form-control mb-3" required />
+                            <input type="text" name="alamat" placeholder="Alamat" class="form-control mb-3" required />
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Tambah</button>
