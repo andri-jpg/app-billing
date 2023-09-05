@@ -40,7 +40,8 @@ require 'get_history.php';
             
                                 <div class="col-md-12">
                                     <a href="laporan_history_excel.php" target="_blank" class="btn btn-success mb-3"><i class="fa fa-file-excel"></i>Export to Excel</a>
-                                
+                                    <a href="laporan_history_pdf.php" target="_blank" class="btn btn-danger mb-3"><i class="fa fa-file-pdf"></i>
+                                    Export to PDF</a>
                                 </div>
                             </div>
                             <div class="card-body">
